@@ -13,9 +13,7 @@
 ~   limitations under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"  
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -26,7 +24,7 @@
 
   <groupId>org.kitei.internal</groupId>
   <artifactId>kitei-root</artifactId>
-  <version>1-SNAPSHOT</version>
+  <version>1</version>
   <packaging>pom</packaging>
 
   <name>kitei-root</name>
@@ -40,6 +38,7 @@
     <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
     <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
     <url>https://github.com/kitei/kitei-policy/</url>
+    <tag>kitei-policy-1</tag>
   </scm>
 
   <licenses>
@@ -59,7 +58,7 @@
   </developers>
 
   <properties>
-    <dep.kitei-rules.version>1-SNAPSHOT</dep.kitei-rules.version>
+    <dep.kitei-rules.version>1</dep.kitei-rules.version>
     <dep.kawala-lessio.version>2.2.0</dep.kawala-lessio.version>
   </properties>
 
