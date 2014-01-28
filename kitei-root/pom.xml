@@ -25,7 +25,7 @@
 
   <groupId>org.kitei.internal</groupId>
   <artifactId>kitei-root</artifactId>
-  <version>2-SNAPSHOT</version>
+  <version>2</version>
   <packaging>pom</packaging>
 
   <name>kitei-root</name>
@@ -39,7 +39,7 @@
     <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
     <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
     <url>https://github.com/kitei/kitei-policy/</url>
-    <tag>HEAD</tag>
+    <tag>kitei-policy-2</tag>
   </scm>
 
   <licenses>
@@ -59,7 +59,7 @@
   </developers>
 
   <properties>
-    <dep.kitei-rules.version>2-SNAPSHOT</dep.kitei-rules.version>
+    <dep.kitei-rules.version>2</dep.kitei-rules.version>
     <dep.kitei-lessio.version>2.0</dep.kitei-lessio.version>
   </properties>
 
