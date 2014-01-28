@@ -19,7 +19,8 @@
   <parent>
     <groupId>org.basepom</groupId>
     <artifactId>basepom-standard-oss</artifactId>
-    <version>3</version>
+    <version>4</version>
+    <relativePath />
   </parent>
 
   <groupId>org.kitei.internal</groupId>
@@ -59,8 +60,31 @@
 
   <properties>
     <dep.kitei-rules.version>2-SNAPSHOT</dep.kitei-rules.version>
-    <dep.kawala-lessio.version>2.2.0</dep.kawala-lessio.version>
+    <dep.kitei-lessio.version>2.0</dep.kitei-lessio.version>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.kitei.testing</groupId>
+      <artifactId>kitei-lessio</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.kitei.testing</groupId>
+        <artifactId>kitei-lessio</artifactId>
+        <version>${dep.kitei-lessio.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <pluginManagement>
@@ -75,15 +99,9 @@
               <version>${dep.kitei-rules.version}</version>
             </dependency>
           </dependencies>
-          <!-- license and xml header from the rules jar -->
+          <!-- license header from the rules jar -->
           <configuration>
-            <header>license/apache-license-header.txt</header>
-            <headerDefinitions>
-              <headerDefinition>license/xml-prefix.xml</headerDefinition>
-            </headerDefinitions>
-            <mapping>
-              <xml>XML_PREFIX</xml>
-            </mapping>
+            <header>license/kitei-apache-license-header.txt</header>
           </configuration>
         </plugin>
 
@@ -110,6 +128,12 @@
           <artifactId>maven-enforcer-plugin</artifactId>
           <configuration>
             <rules>
+              <bannedDependencies>
+                <excludes combine.children="append">
+                  <!-- use kitei lessio -->
+                  <exclude>com.nesscomputing.testing:kawala-lessio</exclude>
+                </excludes>
+              </bannedDependencies>
               <requireFilesDontExist>
                 <!-- Make sure that none of the jar sneak in a log4j config file -->
                 <files>
@@ -126,31 +150,17 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <dependencies>
             <dependency>
-              <groupId>com.nesscomputing.testing</groupId>
-              <artifactId>kawala-lessio</artifactId>
-              <version>${dep.kawala-lessio.version}</version>
-              <exclusions>
-                <exclusion>
-                  <groupId>com.google.code.findbugs</groupId>
-                  <artifactId>jsr305</artifactId>
-                </exclusion>
-              </exclusions>
-            </dependency>
-            <dependency>
-              <groupId>com.google.code.findbugs</groupId>
-              <artifactId>annotations</artifactId>
-              <version>${dep.findbugs.version}</version>
+              <groupId>org.kitei.testing</groupId>
+              <artifactId>kitei-lessio</artifactId>
+              <version>${dep.kitei-lessio.version}</version>
             </dependency>
           </dependencies>
           <configuration>
             <argLine>
               ${argLine}
-              -Djava.security.manager=com.nesscomputing.testing.lessio.LessIOSecurityManager
+              -Djava.security.manager=org.kitei.testing.lessio.LessIOSecurityManager
               -Dfile.encoding=${project.build.sourceEncoding}
             </argLine>
-            <systemPropertyVariables combine.children="append">
-              <ness.log.assimilate>true</ness.log.assimilate>
-            </systemPropertyVariables>
           </configuration>
         </plugin>
       </plugins>

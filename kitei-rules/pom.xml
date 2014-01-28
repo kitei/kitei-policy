@@ -19,7 +19,8 @@
   <parent>
     <groupId>org.basepom</groupId>
     <artifactId>basepom-standard-oss</artifactId>
-    <version>3</version>
+    <version>4</version>
+    <relativePath />
   </parent>
 
   <groupId>org.kitei.internal</groupId>
@@ -65,13 +66,7 @@
           <groupId>com.mycila</groupId>
           <artifactId>license-maven-plugin</artifactId>
           <configuration>
-            <header>${project.basedir}/src/main/resources/license/apache-license-header.txt</header>
-            <headerDefinitions>
-              <headerDefinition>${project.basedir}/src/main/resources/license/xml-prefix.xml</headerDefinition>
-            </headerDefinitions>
-            <mapping>
-              <xml>XML_PREFIX</xml>
-            </mapping>
+            <header>${project.basedir}/src/main/resources/license/kitei-apache-license-header.txt</header>
           </configuration>
         </plugin>
       </plugins>
