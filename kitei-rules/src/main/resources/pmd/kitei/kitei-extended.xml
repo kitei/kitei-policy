@@ -79,6 +79,13 @@
   </rule>
 
   <!--
+      Nothing wrong with a little syntactic sugar.
+  -->
+  <rule ref="rulesets/java/optimizations.xml/UseStringBufferForStringAppends">
+    <priority>5</priority>
+  </rule>
+
+  <!--
       Same as above, but unfortunately there is no method readily available
       to do the deed. Not even in Guava.
   -->

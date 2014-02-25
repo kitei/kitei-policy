@@ -91,6 +91,7 @@
     <exclude name="MethodArgumentCouldBeFinal"/>
     <exclude name="AvoidInstantiatingObjectsInLoops" />
     <exclude name="RedundantFieldInitializer" />
+    <exclude name="UseStringBufferForStringAppends"/>
   </rule>
 
   <rule ref="rulesets/java/strictexception.xml">
