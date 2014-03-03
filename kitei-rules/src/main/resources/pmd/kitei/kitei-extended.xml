@@ -51,6 +51,14 @@
     <priority>5</priority>
   </rule>
 
+
+  <!--
+       Rewrite as utility classes.
+  -->
+  <rule ref="rulesets/java/design.xml/UseUtilityClass">
+    <priority>5</priority>
+  </rule>
+
   <!--
       yes, they should. However, rewriting every bit of existing code where they
       are not is harmful. So just flag them.

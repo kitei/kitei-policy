@@ -68,6 +68,7 @@
     <exclude name="AbstractClassWithoutAbstractMethod" />
     <exclude name="AvoidReassigningParameters"/>
     <exclude name="UnnecessaryLocalBeforeReturn" />
+    <exclude name="UseUtilityClass" />
   </rule>
 
   <rule ref="rulesets/java/imports.xml">
@@ -109,6 +110,9 @@
 
     <!-- will flag correctly sized StringBuilders, too. Useless -->
     <exclude name="InsufficientStringBufferDeclaration" />
+
+    <!-- all methods return this. Useless and actually wrong. -->
+    <exclude name="ConsecutiveAppendsShouldReuse" />
 
     <!-- included below as prio 5 -->
     <exclude name="InefficientEmptyStringCheck" />
