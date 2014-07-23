@@ -13,58 +13,58 @@
 ~   limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.basepom</groupId>
-    <artifactId>basepom-standard-oss</artifactId>
-    <version>5</version>
-  </parent>
+    <parent>
+        <groupId>org.basepom</groupId>
+        <artifactId>basepom-standard-oss</artifactId>
+        <version>6-SNAPSHOT</version>
+    </parent>
 
-  <groupId>org.kitei.internal</groupId>
-  <artifactId>kitei-policy</artifactId>
-  <version>4-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <groupId>org.kitei.internal</groupId>
+    <artifactId>kitei-policy</artifactId>
+    <version>4-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <name>kitei-policy</name>
-  <description>
-    Kitei policy related artifacts.
-  </description>
-  <url>https://github.com/kitei/kitei-policy/</url>
-
-  <inceptionYear>2013</inceptionYear>
-
-  <scm>
-    <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
-    <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
+    <name>kitei-policy</name>
+    <description>
+        Kitei policy related artifacts.
+    </description>
     <url>https://github.com/kitei/kitei-policy/</url>
-    <tag>HEAD</tag>
-  </scm>
 
-  <licenses>
-    <license>
-      <name>Apache License 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+    <inceptionYear>2013</inceptionYear>
 
-  <developers>
-    <developer>
-      <id>hgschmie</id>
-      <name>Henning Schmiedehausen</name>
-      <timezone>-8</timezone>
-    </developer>
-  </developers>
+    <scm>
+        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
+        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
+        <url>https://github.com/kitei/kitei-policy/</url>
+        <tag>HEAD</tag>
+    </scm>
 
-  <modules>
-    <module>kitei-rules</module>
-    <module>kitei-root</module>
-  </modules>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-  <properties>
-    <basepom.check.skip-all>true</basepom.check.skip-all>
-    <basepom.check.skip-license>false</basepom.check.skip-license>
-    <basepom.release.tag-name-format>kitei-policy-@{project.version}</basepom.release.tag-name-format>
-  </properties>
+    <developers>
+        <developer>
+            <id>hgschmie</id>
+            <name>Henning Schmiedehausen</name>
+            <timezone>-8</timezone>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>kitei-rules</module>
+        <module>kitei-root</module>
+    </modules>
+
+    <properties>
+        <basepom.check.skip-all>true</basepom.check.skip-all>
+        <basepom.check.skip-license>false</basepom.check.skip-license>
+        <basepom.release.tag-name-format>kitei-policy-@{project.version}</basepom.release.tag-name-format>
+    </properties>
 </project>

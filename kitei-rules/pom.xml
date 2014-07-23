@@ -13,63 +13,62 @@
 ~   limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.basepom</groupId>
+        <artifactId>basepom-standard-oss</artifactId>
+        <version>6-SNAPSHOT</version>
+        <relativePath />
+    </parent>
 
-  <parent>
-    <groupId>org.basepom</groupId>
-    <artifactId>basepom-standard-oss</artifactId>
-    <version>5</version>
-    <relativePath />
-  </parent>
+    <groupId>org.kitei.internal</groupId>
+    <artifactId>kitei-rules</artifactId>
+    <version>4-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <groupId>org.kitei.internal</groupId>
-  <artifactId>kitei-rules</artifactId>
-  <version>4-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <name>kitei-rules</name>
+    <description>
+        Ruleset and configuration for the various checker tools used by the
+        Kitei build.
+    </description>
 
-  <name>kitei-rules</name>
-  <description>
-    Ruleset and configuration for the various checker tools used by the
-    Kitei build.
-  </description>
+    <inceptionYear>2013</inceptionYear>
 
-  <inceptionYear>2013</inceptionYear>
+    <scm>
+        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
+        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
+        <url>https://github.com/kitei/kitei-policy/</url>
+        <tag>HEAD</tag>
+    </scm>
 
-  <scm>
-    <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
-    <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
-    <url>https://github.com/kitei/kitei-policy/</url>
-    <tag>HEAD</tag>
-  </scm>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-  <licenses>
-    <license>
-      <name>Apache License 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+    <developers>
+        <developer>
+            <id>hgschmie</id>
+            <name>Henning Schmiedehausen</name>
+            <timezone>-8</timezone>
+        </developer>
+    </developers>
 
-  <developers>
-    <developer>
-      <id>hgschmie</id>
-      <name>Henning Schmiedehausen</name>
-      <timezone>-8</timezone>
-    </developer>
-  </developers>
-
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>com.mycila</groupId>
-          <artifactId>license-maven-plugin</artifactId>
-          <configuration>
-            <header>${project.basedir}/src/main/resources/license/kitei-apache-license-header.txt</header>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <configuration>
+                        <header>${project.basedir}/src/main/resources/license/kitei-apache-license-header.txt</header>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
