@@ -18,13 +18,13 @@
     <parent>
         <groupId>org.basepom</groupId>
         <artifactId>basepom-standard-oss</artifactId>
-        <version>6-SNAPSHOT</version>
+        <version>6</version>
         <relativePath />
     </parent>
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-root</artifactId>
-    <version>4-SNAPSHOT</version>
+    <version>4</version>
     <packaging>pom</packaging>
 
     <name>kitei-root</name>
@@ -38,7 +38,7 @@
         <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
         <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
         <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
+        <tag>kitei-policy-4</tag>
     </scm>
 
     <licenses>
@@ -58,7 +58,7 @@
     </developers>
 
     <properties>
-        <dep.kitei-rules.version>4-SNAPSHOT</dep.kitei-rules.version>
+        <dep.kitei-rules.version>4</dep.kitei-rules.version>
         <dep.kitei-lessio.version>2.0</dep.kitei-lessio.version>
 
         <!-- CI profile -->
