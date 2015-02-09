@@ -94,6 +94,14 @@
   </rule>
 
   <!--
+      In 2015, the JVM will optimize that anyway. And it allows grouping of
+      fields even if they are not used on any path.
+  -->
+  <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration">
+    <priority>5</priority>
+  </rule>
+
+  <!--
       Same as above, but unfortunately there is no method readily available
       to do the deed. Not even in Guava.
   -->

@@ -93,6 +93,7 @@
     <exclude name="AvoidInstantiatingObjectsInLoops" />
     <exclude name="RedundantFieldInitializer" />
     <exclude name="UseStringBufferForStringAppends"/>
+    <exclude name="PrematureDeclaration"/>
   </rule>
 
   <rule ref="rulesets/java/strictexception.xml">
