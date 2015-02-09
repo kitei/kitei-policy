@@ -23,7 +23,7 @@
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-policy</artifactId>
-    <version>5</version>
+    <version>6-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>kitei-policy</name>
@@ -38,7 +38,7 @@
         <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
         <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
         <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>kitei-policy-5</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
