@@ -38,7 +38,7 @@
   </rule>
 
   <rule ref="rulesets/java/design.xml">
-    <exclude name="UseSingleton"/>
+    <exclude name="UseUtilityClass"/>
     <exclude name="SimplifyBooleanReturns"/>
     <exclude name="SimplifyBooleanExpressions"/>
     <exclude name="AvoidDeeplyNestedIfStmts"/>
