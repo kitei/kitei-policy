@@ -54,6 +54,7 @@
     <exclude name="AvoidInstanceofChecksInCatchClause"/>
     <exclude name="CompareObjectsWithEquals"/>
     <exclude name="PositionLiteralsFirstInComparisons"/>
+    <exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons"/>
     <exclude name="UncommentedEmptyMethod"/>
     <exclude name="UncommentedEmptyConstructor"/>
     <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
