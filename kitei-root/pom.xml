@@ -68,7 +68,7 @@
         <basepom.check.skip-checkstyle>true</basepom.check.skip-checkstyle>
 
         <!-- Enforce CI on release build -->
-        <basepom.release.profiles>oss-release,ci</basepom.release.profiles>
+        <basepom.release.profiles>basepom.oss-release,ci</basepom.release.profiles>
     </properties>
 
     <dependencies>
