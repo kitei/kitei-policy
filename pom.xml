@@ -16,9 +16,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.basepom</groupId>
-        <artifactId>basepom-standard-oss</artifactId>
-        <version>10</version>
+        <groupId>org.kitei.internal</groupId>
+        <artifactId>kitei-root</artifactId>
+        <version>6-SNAPSHOT</version>
+        <relativePath>./kitei-root</relativePath>
     </parent>
 
     <groupId>org.kitei.internal</groupId>

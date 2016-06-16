@@ -55,7 +55,7 @@
     <exclude name="CompareObjectsWithEquals"/>
     <exclude name="PositionLiteralsFirstInComparisons"/>
     <exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons"/>
-    <exclude name="UncommentedEmptyMethod"/>
+    <exclude name="UncommentedEmptyMethodBody"/>
     <exclude name="UncommentedEmptyConstructor"/>
     <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
     <exclude name="SingularField"/>

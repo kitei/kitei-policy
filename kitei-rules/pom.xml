@@ -17,8 +17,8 @@
 
     <parent>
         <groupId>org.basepom</groupId>
-        <artifactId>basepom-standard-oss</artifactId>
-        <version>10</version>
+        <artifactId>basepom-oss</artifactId>
+        <version>18</version>
         <relativePath />
     </parent>
 
@@ -29,8 +29,7 @@
 
     <name>kitei-rules</name>
     <description>
-        Ruleset and configuration for the various checker tools used by the
-        Kitei build.
+        Ruleset and configuration for the various checker tools used by the Kitei build.
     </description>
 
     <inceptionYear>2013</inceptionYear>

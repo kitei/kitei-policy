@@ -17,8 +17,8 @@
 
     <parent>
         <groupId>org.basepom</groupId>
-        <artifactId>basepom-standard-oss</artifactId>
-        <version>10</version>
+        <artifactId>basepom-oss</artifactId>
+        <version>18</version>
         <relativePath />
     </parent>
 
@@ -60,6 +60,7 @@
     <properties>
         <dep.kitei-rules.version>6-SNAPSHOT</dep.kitei-rules.version>
         <dep.kitei-lessio.version>2.0</dep.kitei-lessio.version>
+        <dep.junit.version>4.12</dep.junit.version>
 
         <!-- CI profile -->
         <basepom.check.skip-findbugs>true</basepom.check.skip-findbugs>
@@ -86,6 +87,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${dep.junit.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.kitei.testing</groupId>
                 <artifactId>kitei-lessio</artifactId>
                 <version>${dep.kitei-lessio.version}</version>
@@ -100,7 +106,7 @@
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
                     <dependencies>
-                        <dependency>    
+                        <dependency>
                             <groupId>org.kitei.internal</groupId>
                             <artifactId>kitei-rules</artifactId>
                             <version>${dep.kitei-rules.version}</version>
@@ -142,7 +148,7 @@
                                 </excludes>
                             </bannedDependencies>
                             <requireFilesDontExist>
-                                <!-- Make sure that none of the jar sneak in a log4j config file -->
+                                <!-- Make sure that none of the jars sneak in a log4j config file -->
                                 <files>
                                     <file>${basedir}/src/test/resources/log4j.xml</file>
                                     <file>${basedir}/src/test/resources/log4j.properties</file>
