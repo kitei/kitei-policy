@@ -12,138 +12,490 @@
 ~   See the License for the specific language governing permissions and
 ~   limitations under the License.
 -->
+
 <ruleset name="kitei-standard"
 	     xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
 	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
 
-  <description>
-    Standard set of rules. Those should not be included directly as their content might shift during flight.
-  </description>
+    <description>Default ruleset. Derived from ecotramp, 2022-05-25</description>
 
-  <rule ref="rulesets/java/braces.xml"/>
-  <rule ref="rulesets/java/clone.xml"/>
-  <rule ref="rulesets/java/empty.xml"/>
-  <rule ref="rulesets/java/finalizers.xml"/>
+    <!-- PMD 6.35.0 - 6/22/2021 -->
 
-  <rule ref="rulesets/java/junit.xml">
-    <exclude name="JUnitTestContainsTooManyAsserts" />
-  </rule>
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_bestpractices.html -->
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="AbstractClassWithoutAbstractMethod"/>
+        <exclude name="AccessorClassGeneration"/>
+        <exclude name="AccessorMethodGeneration"/>
+        <exclude name="AvoidPrintStackTrace"/>
+        <exclude name="AvoidReassigningParameters"/>
+        <exclude name="AvoidReassigningLoopVariables"/>
 
-  <rule ref="rulesets/java/basic.xml">
-    <exclude name="ForLoopShouldBeWhileLoop"/>
-    <exclude name="DoubleCheckedLocking"/>
-    <exclude name="CollapsibleIfStatements"/>
-    <exclude name="AvoidUsingHardCodedIP"/>
-  </rule>
+        <!-- will flag any class member that is a string buffer. Useless. -->
+        <exclude name="AvoidStringBufferField"/>
 
-  <rule ref="rulesets/java/design.xml">
-    <exclude name="UseUtilityClass"/>
-    <exclude name="SimplifyBooleanReturns"/>
-    <exclude name="SimplifyBooleanExpressions"/>
-    <exclude name="AvoidDeeplyNestedIfStmts"/>
-    <exclude name="SwitchDensity"/>
-    <exclude name="AccessorClassGeneration"/>
-    <exclude name="CloseResource"/>
-    <exclude name="NonStaticInitializer"/>
-    <exclude name="DefaultLabelNotLastInSwitchStmt"/>
-    <exclude name="ConfusingTernary"/>
-    <exclude name="ImmutableField"/>
-    <exclude name="AssignmentToNonFinalStatic"/>
-    <exclude name="AvoidSynchronizedAtMethodLevel"/>
-    <exclude name="AvoidInstanceofChecksInCatchClause"/>
-    <exclude name="CompareObjectsWithEquals"/>
-    <exclude name="PositionLiteralsFirstInComparisons"/>
-    <exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons"/>
-    <exclude name="UncommentedEmptyMethodBody"/>
-    <exclude name="UncommentedEmptyConstructor"/>
-    <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
-    <exclude name="SingularField"/>
-    <exclude name="ReturnEmptyArrayRatherThanNull"/>
-    <exclude name="TooFewBranchesForASwitchStatement"/>
-    <exclude name="LogicInversion"/>
-    <exclude name="FieldDeclarationsShouldBeAtStartOfClass"/>
-    <exclude name="GodClass"/>
+        <exclude name="AvoidUsingHardCodedIP"/>
+        <exclude name="DefaultLabelNotLastInSwitchStmt"/>
+        <exclude name="GuardLogStatement"/>
+        <!-- This is a reasonable rule but JDK8 Predicate#test triggers it unfortunately -->
+        <exclude name="JUnit4TestShouldUseTestAnnotation" />
+        <exclude name="JUnitTestContainsTooManyAsserts" />
+        <exclude name="JUnitUseExpected"/>
+        <exclude name="JUnitAssertionsShouldIncludeMessage" />
 
-    <!-- included below as prio 5 -->
-    <exclude name="AbstractClassWithoutAbstractMethod" />
-    <exclude name="AvoidReassigningParameters"/>
-    <exclude name="UnnecessaryLocalBeforeReturn" />
-    <exclude name="UseUtilityClass" />
-  </rule>
+        <!-- this is a valid rule but it has too many bugs to be useful. See https://github.com/pmd/pmd/issues/2147 -->
+        <exclude name="JUnitTestsShouldIncludeAssert" />
 
-  <rule ref="rulesets/java/imports.xml">
-    <!-- included below as prio 5 -->
-    <exclude name="TooManyStaticImports"/>
-  </rule>
+        <!-- will complain about any field that is not an interface. -->
+        <exclude name="LooseCoupling" />
 
-  <rule ref="rulesets/java/migrating.xml">
-    <exclude name="ReplaceVectorWithList"/>
-    <exclude name="ReplaceHashtableWithMap"/>
-    <exclude name="ReplaceEnumerationWithIterator"/>
-    <exclude name="JUnitUseExpected"/>
-  </rule>
+        <exclude name="OneDeclarationPerLine" />
+        <exclude name="LiteralsFirstInComparisons"/>
+        <!-- deprecated in 6.24 -->
+        <exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons"/>
+        <!-- deprecated in 6.24 -->
+        <exclude name="PositionLiteralsFirstInComparisons"/>
+        <exclude name="ReplaceEnumerationWithIterator"/>
+        <exclude name="ReplaceHashtableWithMap"/>
+        <exclude name="ReplaceVectorWithList"/>
+        <exclude name="SystemPrintln"/>
+        <exclude name="UnusedFormalParameter"/>
+        <exclude name="UseVarargs"/>
+        <exclude name="UseStandardCharsets"/>
+        <exclude name="ForLoopVariableCount"/>
+    </rule>
 
-  <rule ref="rulesets/java/optimizations.xml">
-    <exclude name="UseArrayListInsteadOfVector"/>
-    <exclude name="SimplifyStartsWith"/>
+    <rule ref="category/java/bestpractices.xml/AvoidReassigningParameters">
+        <priority>5</priority>
+    </rule>
 
-    <!-- included below as prio 5 -->
-    <exclude name="LocalVariableCouldBeFinal"/>
-    <exclude name="MethodArgumentCouldBeFinal"/>
-    <exclude name="AvoidInstantiatingObjectsInLoops" />
-    <exclude name="RedundantFieldInitializer" />
-    <exclude name="UseStringBufferForStringAppends"/>
-    <exclude name="PrematureDeclaration"/>
-  </rule>
+    <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
+        <priority>5</priority>
+    </rule>
 
-  <rule ref="rulesets/java/strictexception.xml">
-    <exclude name="AvoidCatchingThrowable"/>
-    <exclude name="SignatureDeclareThrowsException"/>
-    <exclude name="AvoidThrowingNullPointerException"/>
-    <exclude name="AvoidCatchingGenericException"/>
-  </rule>
+    <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod">
+        <priority>5</priority>
+    </rule>
 
-  <rule ref="rulesets/java/strings.xml">
-    <exclude name="AvoidDuplicateLiterals"/>
+    <rule ref="category/java/bestpractices.xml/AccessorClassGeneration">
+        <priority>5</priority>
+    </rule>
 
-    <!-- will flag any class member that is a string buffer. Useless. -->
-    <exclude name="AvoidStringBufferField"/>
+    <rule ref="category/java/bestpractices.xml/AccessorMethodGeneration">
+        <priority>5</priority>
+    </rule>
 
-    <!-- will flag correctly sized StringBuilders, too. Useless -->
-    <exclude name="InsufficientStringBufferDeclaration" />
+    <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace">
+        <priority>5</priority>
+    </rule>
 
-    <!-- all methods return this. Useless and actually wrong. -->
-    <exclude name="ConsecutiveAppendsShouldReuse" />
+    <rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
+        <priority>3</priority>
+        <properties>
+            <property name="strictMode" value="true" />
+        </properties>
+    </rule>
 
-    <!-- included below as prio 5 -->
-    <exclude name="InefficientEmptyStringCheck" />
-  </rule>
+    <rule ref="category/java/bestpractices.xml/DefaultLabelNotLastInSwitchStmt">
+        <priority>5</priority>
+    </rule>
 
-  <rule ref="rulesets/java/typeresolution.xml">
-    <!-- will complain about any field that is not an interface. -->
-    <exclude name="LooseCoupling" />
+    <rule ref="category/java/bestpractices.xml/ReplaceEnumerationWithIterator">
+        <priority>5</priority>
+    </rule>
 
-    <exclude name="SignatureDeclareThrowsException"/>
-  </rule>
+    <rule ref="category/java/bestpractices.xml/ReplaceHashtableWithMap">
+        <priority>5</priority>
+    </rule>
 
-  <rule ref="rulesets/java/unnecessary.xml">
-    <!-- included below as prio 5 -->
-    <exclude name="UselessParentheses"/>
-    <exclude name="UnnecessaryFinalModifier"/>
-  </rule>
+    <rule ref="category/java/bestpractices.xml/ReplaceVectorWithList">
+        <priority>5</priority>
+    </rule>
 
-  <rule ref="rulesets/java/unusedcode.xml">
-    <!-- included below as prio 5 -->
-    <exclude name="UnusedFormalParameter"/>
-    <exclude name="UnusedModifier" />
-  </rule>
+    <rule ref="category/java/bestpractices.xml/SystemPrintln">
+        <priority>5</priority>
+    </rule>
 
-  <rule ref="rulesets/java/controversial.xml/SuspiciousOctalEscape"/>
+    <rule ref="category/java/bestpractices.xml/UseVarargs">
+        <priority>3</priority>
+    </rule>
 
-  <rule ref="rulesets/java/imports.xml/TooManyStaticImports">
-    <properties>
-      <property name="maximumStaticImports" value="20"/>
-    </properties>
-  </rule>
+    <rule ref="category/java/bestpractices.xml/ForLoopVariableCount">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/bestpractices.xml/JUnitAssertionsShouldIncludeMessage">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/bestpractices.xml/UseStandardCharsets">
+        <priority>5</priority>
+    </rule>
+
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_codestyle.html -->
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="AbstractNaming"/>
+        <exclude name="AtLeastOneConstructor"/>
+        <exclude name="AvoidFinalLocalVariable"/>
+        <exclude name="CallSuperInConstructor"/>
+        <exclude name="ClassNamingConventions"/>
+        <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="ConfusingTernary"/>
+        <exclude name="ControlStatementBraces"/>
+        <exclude name="DefaultPackage"/>
+        <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
+        <exclude name="FieldDeclarationsShouldBeAtStartOfClass"/>
+        <exclude name="ForLoopShouldBeWhileLoop"/>
+        <exclude name="GenericsNaming"/>
+        <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="LongVariable"/>
+        <exclude name="MethodArgumentCouldBeFinal"/>
+        <exclude name="MethodNamingConventions"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="PrematureDeclaration"/>
+        <exclude name="ShortClassName"/>
+        <exclude name="ShortMethodName"/>
+        <exclude name="ShortVariable"/>
+        <exclude name="TooManyStaticImports"/>
+        <exclude name="UnnecessaryConstructor" />
+        <exclude name="UnnecessaryLocalBeforeReturn" />
+        <exclude name="UnnecessaryModifier" />
+        <exclude name="UselessParentheses"/>
+        <exclude name="BooleanGetMethodName"/>
+        <exclude name="ExtendsObject"/>
+        <exclude name="UseUnderscoresInNumericLiterals"/>
+        <exclude name="UnnecessaryAnnotationValueElement" />
+        <exclude name="UnnecessaryFullyQualifiedName"/>
+
+        <exclude name="FieldNamingConventions"/>
+        <exclude name="FormalParameterNamingConventions"/>
+        <exclude name="LocalVariableNamingConventions"/>
+        <exclude name="LinguisticNaming" />
+        <exclude name="UseShortArrayInitializer" />
+        <exclude name="UnnecessaryImport" />
+
+        <!-- deprecated, remove with 7.0.0 -->
+        <exclude name="VariableNamingConventions"/>
+        <exclude name="MIsLeadingVariableName"/>
+        <exclude name="SuspiciousConstantFieldName"/>
+        <exclude name="AvoidPrefixingMethodParameters"/>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/FieldNamingConventions">
+        <properties>
+            <!-- we allow a wider set of enums -->
+            <property name="enumConstantPattern" value="[a-zA-Z_0-9]+" />
+            <!-- for private constants, more names are allowed, otherwise the usual -->
+            <!-- "log" or "serialVersionUid" fail the build -->
+            <property name="constantPattern" value="[a-zA-Z_0-9]+" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/FormalParameterNamingConventions">
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions">
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/LinguisticNaming">
+        <properties>
+            <!-- breaks with the builder pattern for setters returning 'this' -->
+            <property name="checkSetters" value="false" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/ControlStatementBraces">
+        <properties>
+            <property name="allowEmptyLoop" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/BooleanGetMethodName">
+        <priority>3</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/ExtendsObject">
+        <priority>3</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UnnecessaryImport">
+        <priority>3</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/TooManyStaticImports">
+        <properties>
+            <property name="maximumStaticImports" value="20"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UnnecessaryAnnotationValueElement">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UnnecessaryConstructor">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UseUnderscoresInNumericLiterals">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UnnecessaryModifier">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/UseShortArrayInitializer">
+        <priority>5</priority>
+    </rule>
+
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_design.html -->
+    <rule ref="category/java/design.xml">
+        <exclude name="AvoidCatchingGenericException"/>
+        <exclude name="AvoidDeeplyNestedIfStmts"/>
+        <exclude name="AvoidThrowingNullPointerException"/>
+        <exclude name="CollapsibleIfStatements"/>
+        <exclude name="CouplingBetweenObjects"/>
+        <exclude name="DataClass"/>
+        <exclude name="ExcessiveImports"/>
+        <exclude name="ExcessiveParameterList"/>
+        <exclude name="ExcessivePublicCount"/>
+        <exclude name="GodClass"/>
+        <exclude name="ImmutableField"/>
+        <exclude name="LawOfDemeter"/>
+        <exclude name="LogicInversion"/>
+        <exclude name="LoosePackageCoupling"/>
+        <exclude name="NPathComplexity"/>
+        <exclude name="NcssCount"/>
+        <exclude name="SignatureDeclareThrowsException"/>
+        <exclude name="SimplifyBooleanExpressions"/>
+        <exclude name="SimplifyBooleanReturns"/>
+        <exclude name="SingularField"/>
+        <exclude name="SwitchDensity"/>
+        <exclude name="TooManyFields"/>
+        <exclude name="TooManyMethods"/>
+        <exclude name="UseObjectForClearerAPI"/>
+        <exclude name="UseUtilityClass"/>
+        <exclude name="AvoidUncheckedExceptionsInSignatures"/>
+        <exclude name="CognitiveComplexity"/>
+    </rule>
+
+    <rule ref="category/java/design.xml/CollapsibleIfStatements">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <priority>5</priority>
+    </rule>
+
+    <!-- Static factory methods for immutable objects often exceed this. Use with care. -->
+    <rule ref="category/java/design.xml/ExcessiveParameterList">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/ExcessivePublicCount">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/NcssCount">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/NPathComplexity">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/SignatureDeclareThrowsException">
+        <priority>5</priority>
+        <properties>
+            <property name="IgnoreJUnitCompletely" value="true" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml/SimplifyBooleanExpressions">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/SimplifyBooleanReturns">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/TooManyFields">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/TooManyMethods">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/UseObjectForClearerAPI">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/UseUtilityClass">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/AvoidUncheckedExceptionsInSignatures">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/design.xml/CognitiveComplexity">
+        <priority>5</priority>
+    </rule>
+
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_errorprone.html -->
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="AssignmentInOperand"/>
+        <exclude name="AssignmentToNonFinalStatic"/>
+        <exclude name="AvoidAccessibilityAlteration"/>
+        <exclude name="AvoidCatchingThrowable"/>
+        <exclude name="AvoidDuplicateLiterals"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
+        <exclude name="AvoidInstanceofChecksInCatchClause"/>
+        <exclude name="AvoidLiteralsInIfCondition"/>
+        <exclude name="BeanMembersShouldSerialize"/>
+        <exclude name="CloseResource"/>
+        <exclude name="CompareObjectsWithEquals"/>
+        <!-- deprecated in 6.27 -->
+        <exclude name="DataflowAnomalyAnalysis"/>
+        <exclude name="DoNotCallGarbageCollectionExplicitly"/>
+        <exclude name="DoNotHardCodeSDCard"/>
+        <exclude name="DoNotThrowExceptionInFinally"/>
+        <exclude name="DontImportSun"/>
+        <exclude name="InstantiationToGetClass"/>
+        <exclude name="MissingSerialVersionUID"/>
+        <exclude name="MoreThanOneLogger"/>
+        <exclude name="NonStaticInitializer"/>
+        <exclude name="NullAssignment" />
+        <exclude name="ProperLogger"/>
+        <exclude name="ReturnEmptyArrayRatherThanNull"/>
+        <exclude name="StringBufferInstantiationWithChar"/>
+        <exclude name="UseCorrectExceptionLogging"/>
+        <!-- https://github.com/pmd/pmd/issues/3173 -->
+        <exclude name="UseProperClassLoader"/>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/AssignmentToNonFinalStatic">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/AvoidAccessibilityAlteration">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/CloseResource">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/DoNotCallGarbageCollectionExplicitly">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally">
+        <priority>3</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/InstantiationToGetClass">
+        <priority>3</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/ProperLogger">
+        <priority>5</priority>
+        <properties>
+            <property name="staticLoggerName" value="LOG" />
+            <property name="loggerName" value="log" />
+            <property name="loggerClass" value="Logger" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/ReturnEmptyArrayRatherThanNull">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml/StringBufferInstantiationWithChar">
+        <priority>3</priority>
+    </rule>
+
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_multithreading.html -->
+    <rule ref="category/java/multithreading.xml">
+        <exclude name="AvoidSynchronizedAtMethodLevel"/>
+        <exclude name="AvoidUsingVolatile"/>
+        <exclude name="DoubleCheckedLocking"/>
+        <exclude name="UseConcurrentHashMap"/>
+        <exclude name="DontCallThreadRun"/>
+        <exclude name="DoNotUseThreads" />
+    </rule>
+
+    <rule ref="category/java/multithreading.xml/DontCallThreadRun">
+        <priority>3</priority>
+    </rule>
+
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_performance.html -->
+    <rule ref="category/java/performance.xml">
+        <exclude name="AvoidInstantiatingObjectsInLoops" />
+        <!-- deprecated in 6.31 -->
+        <exclude name="AvoidUsingShortType"/>
+
+        <!-- all methods return this. Useless and actually wrong. -->
+        <exclude name="ConsecutiveAppendsShouldReuse" />
+
+        <exclude name="InefficientEmptyStringCheck" />
+
+        <!-- will flag correctly sized StringBuilders, too. Useless -->
+        <exclude name="InsufficientStringBufferDeclaration" />
+
+        <exclude name="RedundantFieldInitializer" />
+        <!-- deprecated in 6.31 -->
+        <exclude name="SimplifyStartsWith"/>
+        <exclude name="TooFewBranchesForASwitchStatement"/>
+        <exclude name="UseArrayListInsteadOfVector"/>
+        <exclude name="UseStringBufferForStringAppends"/>
+    </rule>
+
+    <rule ref="category/java/performance.xml/AvoidInstantiatingObjectsInLoops">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/performance.xml/ConsecutiveAppendsShouldReuse">
+        <priority>5</priority>
+    </rule>
+
+    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_pom_errorprone.html -->
+
+    <rule ref="category/pom/errorprone.xml">
+    </rule>
+
+    <rule ref="category/pom/errorprone.xml/ProjectVersionAsDependencyVersion">
+        <priority>5</priority>
+    </rule>
+
 </ruleset>

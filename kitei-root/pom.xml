@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.basepom</groupId>
         <artifactId>basepom-oss</artifactId>
-        <version>18</version>
+        <version>44</version>
         <relativePath />
     </parent>
 
@@ -27,94 +27,42 @@
     <version>7-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>kitei-root</name>
-    <description>
-        Build policy and rules applied to all Kitei code.
-    </description>
-
-    <inceptionYear>2013</inceptionYear>
-
-    <scm>
-        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
-        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
-        <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <licenses>
-        <license>
-            <name>Apache License 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>hgschmie</id>
-            <name>Henning Schmiedehausen</name>
-            <timezone>-8</timezone>
-        </developer>
-    </developers>
-
     <properties>
+        <project.build.targetJdk>17</project.build.targetJdk>
+        <project.build.systemJdk>[17,)</project.build.systemJdk>
+
+        <!-- till next basepom relase -->
+        <dep.spotbugs.version>4.7.0</dep.spotbugs.version>
+
         <dep.kitei-rules.version>7-SNAPSHOT</dep.kitei-rules.version>
-        <dep.kitei-lessio.version>2.0</dep.kitei-lessio.version>
-        <dep.junit.version>4.12</dep.junit.version>
 
-        <!-- CI profile -->
-        <basepom.check.skip-findbugs>true</basepom.check.skip-findbugs>
-        <basepom.check.skip-pmd>true</basepom.check.skip-pmd>
-        <basepom.check.skip-checkstyle>true</basepom.check.skip-checkstyle>
+        <!-- multi-module projects should deploy at the end -->
+        <basepom.at-end.deploy>true</basepom.at-end.deploy>
+        <basepom.at-end.install>false</basepom.at-end.install>
 
-        <!-- Enforce CI on release build -->
-        <basepom.release.profiles>basepom.oss-release,ci</basepom.release.profiles>
+        <!-- only level 5 pmd allows the builds to pass. -->
+        <basepom.pmd.fail-level>4</basepom.pmd.fail-level>
+
+        <!-- fail on all checkstyle violations -->
+        <basepom.check.checkstyle-severity>warning</basepom.check.checkstyle-severity>
+
+        <!-- do not fail on javadoc errors -->
+        <basepom.check.fail-javadoc>false</basepom.check.fail-javadoc>
+
+        <basepom.release.profiles>basepom.oss-release,kitei-release</basepom.release.profiles>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.kitei.testing</groupId>
-            <artifactId>kitei-lessio</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${dep.junit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.kitei.testing</groupId>
-                <artifactId>kitei-lessio</artifactId>
-                <version>${dep.kitei-lessio.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.kitei.internal</groupId>
-                            <artifactId>kitei-rules</artifactId>
-                            <version>${dep.kitei-rules.version}</version>
-                        </dependency>
-                    </dependencies>
-                    <!-- license header from the rules jar -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
                     <configuration>
-                        <header>license/kitei-apache-license-header.txt</header>
+                        <!-- MDEP-804 -->
+                        <ignoredNonTestScopedDependencies>
+                            <ignoreNonTestScopedDependency>*</ignoreNonTestScopedDependency>
+                        </ignoredNonTestScopedDependencies>
                     </configuration>
                 </plugin>
 
@@ -138,44 +86,34 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.kitei.internal</groupId>
+                            <artifactId>kitei-rules</artifactId>
+                            <version>${dep.kitei-rules.version}</version>
+                        </dependency>
+                    </dependencies>
                     <configuration>
-                        <rules>
-                            <bannedDependencies>
-                                <excludes combine.children="append">
-                                    <!-- use kitei lessio -->
-                                    <exclude>com.nesscomputing.testing:kawala-lessio</exclude>
-                                </excludes>
-                            </bannedDependencies>
-                            <requireFilesDontExist>
-                                <!-- Make sure that none of the jars sneak in a log4j config file -->
-                                <files>
-                                    <file>${basedir}/src/test/resources/log4j.xml</file>
-                                    <file>${basedir}/src/test/resources/log4j.properties</file>
-                                </files>
-                            </requireFilesDontExist>
-                        </rules>
+                        <configLocation>checkstyle/kitei.xml</configLocation>
                     </configuration>
                 </plugin>
 
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
                     <dependencies>
                         <dependency>
-                            <groupId>org.kitei.testing</groupId>
-                            <artifactId>kitei-lessio</artifactId>
-                            <version>${dep.kitei-lessio.version}</version>
+                            <groupId>org.kitei.internal</groupId>
+                            <artifactId>kitei-rules</artifactId>
+                            <version>${dep.kitei-rules.version}</version>
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <argLine>
-                            ${argLine}
-                            -Djava.security.manager=org.kitei.testing.lessio.LessIOSecurityManager
-                            -Dfile.encoding=${project.build.sourceEncoding}
-                        </argLine>
+                        <excludeFilterFile>spotbugs/kitei-exclusions.xml</excludeFilterFile>
                     </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
@@ -183,25 +121,15 @@
     <profiles>
         <!-- Continuous integration profile, enables additional checks: findbugs, pmd, checkstyle -->
         <profile>
-            <id>ci</id>
+            <id>kitei-release</id>
             <properties>
-                <basepom.check.skip-findbugs>false</basepom.check.skip-findbugs>
-                <basepom.check.skip-pmd>false</basepom.check.skip-pmd>
-                <basepom.check.skip-checkstyle>false</basepom.check.skip-checkstyle>
+                <!-- unit and integration tests were run in the preparation step
+                     of the release, can be skipped here -->
+                <basepom.test.skip>true</basepom.test.skip>
+                <basepom.it.skip>true</basepom.it.skip>
+                <basepom.check.skip-all>true</basepom.check.skip-all>
+                <basepom.check.skip-javadoc>false</basepom.check.skip-javadoc>
             </properties>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-plugin</artifactId>
-                            <configuration>
-                                <testFailureIgnore>true</testFailureIgnore>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
         </profile>
     </profiles>
 </project>
