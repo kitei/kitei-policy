@@ -24,7 +24,7 @@
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-root</artifactId>
-    <version>7</version>
+    <version>8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -34,7 +34,7 @@
         <!-- till next basepom relase -->
         <dep.spotbugs.version>4.7.0</dep.spotbugs.version>
 
-        <dep.kitei-rules.version>7</dep.kitei-rules.version>
+        <dep.kitei-rules.version>8-SNAPSHOT</dep.kitei-rules.version>
 
         <!-- multi-module projects should deploy at the end -->
         <basepom.at-end.deploy>true</basepom.at-end.deploy>

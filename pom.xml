@@ -18,13 +18,13 @@
     <parent>
         <groupId>org.kitei.internal</groupId>
         <artifactId>kitei-root</artifactId>
-        <version>7</version>
+        <version>8-SNAPSHOT</version>
         <relativePath>./kitei-root</relativePath>
     </parent>
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-policy</artifactId>
-    <version>7</version>
+    <version>8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>kitei-policy</name>
@@ -39,7 +39,7 @@
         <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
         <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
         <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>kitei-policy-7</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
