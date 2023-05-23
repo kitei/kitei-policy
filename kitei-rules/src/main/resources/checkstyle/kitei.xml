@@ -16,7 +16,7 @@
 
 <!--
 
-Copied from https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml @ 2021-03-23
+Copied from https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml @ 2023-05-21
 
 This code style contains NO javadoc formatting rules.
 
@@ -24,6 +24,8 @@ This code style contains NO javadoc formatting rules.
 
 <!-- https://checkstyle.sourceforge.io/config.html -->
 <module name = "Checker">
+    <module name="SuppressWarningsFilter" />
+
     <!-- *** MODIFIED *** add cache file to the checker *** -->
     <property name="cacheFile" value="${checkstyle.cache.file}"/>
 
@@ -38,14 +40,12 @@ This code style contains NO javadoc formatting rules.
         <property name="fileNamePattern" value="module\-info\.java$"/>
     </module>
 
-    <!-- *** MODIFIED *** enable suppress warnings *** -->
-    <module name="SuppressWarningsFilter" />
-
     <!-- *** MODIFIED *** add filter file *** -->
     <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
     <module name="SuppressionFilter">
         <property name="file" value="${checkstyle.suppression-file}"
                   default="/checkstyle/suppressions.xml"/>
+        <property name="optional" value="true"/>
     </module>
 
     <!-- *** MODIFIED *** enforce EOF newline *** -->
@@ -128,7 +128,7 @@ This code style contains NO javadoc formatting rules.
             <property name="tokens"
                       value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
                              INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF, INTERFACE_DEF, RECORD_DEF,
-                             COMPACT_CTOR_DEF"/>
+                             COMPACT_CTOR_DEF, LITERAL_SWITCH"/>
         </module>
         <module name="SuppressionXpathSingleFilter">
             <!-- suppresion is required till https://github.com/checkstyle/checkstyle/issues/7541 -->
@@ -138,8 +138,10 @@ This code style contains NO javadoc formatting rules.
         </module>
         <module name="WhitespaceAfter">
             <property name="tokens"
-                      value="COMMA, SEMI, TYPECAST, LITERAL_IF, LITERAL_ELSE,
-                             LITERAL_WHILE, LITERAL_DO, LITERAL_FOR, DO_WHILE"/>
+                      value="COMMA, SEMI, TYPECAST, LITERAL_IF, LITERAL_ELSE, LITERAL_RETURN,
+                             LITERAL_WHILE, LITERAL_DO, LITERAL_FOR, LITERAL_FINALLY, DO_WHILE, ELLIPSIS,
+                             LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_CATCH, LAMBDA,
+                             LITERAL_YIELD, LITERAL_CASE"/>
         </module>
         <module name="WhitespaceAround">
             <property name="allowEmptyConstructors" value="true"/>
@@ -300,6 +302,7 @@ This code style contains NO javadoc formatting rules.
                              PARAMETER_DEF, VARIABLE_DEF, METHOD_DEF, PATTERN_VARIABLE_DEF, RECORD_DEF,
                              RECORD_COMPONENT_DEF"/>
         </module>
+        <module name="NoWhitespaceBeforeCaseDefaultColon"/>
         <!-- *** MODIFIED *** removed -->
         <!-- <module name="OverloadMethodsDeclarationOrder"/> -->
         <!-- <module name="VariableDeclarationUsageDistance"/> -->
@@ -333,7 +336,8 @@ This code style contains NO javadoc formatting rules.
             <property name="option" value="NL"/>
             <property name="tokens"
                       value="BAND, BOR, BSR, BXOR, DIV, EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF, LOR,
-                             LT, MINUS, MOD, NOT_EQUAL, PLUS, QUESTION, SL, SR, STAR, METHOD_REF "/>
+                             LT, MINUS, MOD, NOT_EQUAL, PLUS, QUESTION, SL, SR, STAR, METHOD_REF,
+                             TYPE_EXTENSION_AND "/>
         </module>
         <module name="AnnotationLocation">
             <property name="id" value="AnnotationLocationMostCases"/>
@@ -347,7 +351,7 @@ This code style contains NO javadoc formatting rules.
             <property name="allowSamelineMultipleAnnotations" value="true"/>
         </module>
         <module name="MethodName">
-            <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9_]*$"/>
+            <property name="format" value="^[a-z][a-z0-9]\w*$"/>
             <message key="name.invalidPattern"
                      value="Method name ''{0}'' must match pattern ''{1}''."/>
         </module>
@@ -364,13 +368,23 @@ This code style contains NO javadoc formatting rules.
                       default="/checkstyle/xpath-suppressions.xml" />
             <property name="optional" value="true"/>
         </module>
+        <module name="SuppressWarningsHolder" />
+        <module name="SuppressionCommentFilter">
+            <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)" />
+            <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)" />
+            <property name="checkFormat" value="$1" />
+        </module>
+        <module name="SuppressWithNearbyCommentFilter">
+            <property name="commentFormat" value="CHECKSTYLE.SUPPRESS\: ([\w\|]+)"/>
+            <!-- $1 refers to the first match group in the regex defined in commentFormat -->
+            <property name="checkFormat" value="$1"/>
+            <!-- The check is suppressed in the next line of code after the comment -->
+            <property name="influenceFormat" value="1"/>
+        </module>
 
         <!-- *** MODIFIED *** Additional rules -->
 
-        <!-- https://checkstyle.sourceforge.io/config_filters.html#SuppressWithNearbyCommentFilter -->
-        <module name="SuppressWithNearbyCommentFilter"/>
         <!-- https://checkstyle.sourceforge.io/config_annotation.html#SuppressWarningsHolder -->
-        <module name="SuppressWarningsHolder" />
         <!-- https://checkstyle.sourceforge.io/config_imports.html#RedundantImport -->
         <module name="RedundantImport"/>
         <!-- https://checkstyle.sourceforge.io/config_coding.html#UnnecessarySemicolonInEnumeration -->
