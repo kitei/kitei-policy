@@ -24,14 +24,14 @@
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-root</artifactId>
-    <version>9</version>
+    <version>10-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
         <project.build.targetJdk>17</project.build.targetJdk>
         <project.build.systemJdk>[17,)</project.build.systemJdk>
 
-        <dep.kitei-rules.version>9</dep.kitei-rules.version>
+        <dep.kitei-rules.version>10-SNAPSHOT</dep.kitei-rules.version>
 
         <!-- multi-module projects should deploy at the end -->
         <basepom.at-end.deploy>true</basepom.at-end.deploy>
