@@ -24,7 +24,7 @@
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-rules</artifactId>
-    <version>9-SNAPSHOT</version>
+    <version>9</version>
     <packaging>jar</packaging>
 
     <name>kitei-rules</name>
@@ -38,7 +38,7 @@
         <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
         <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
         <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
+        <tag>kitei-policy-9</tag>
     </scm>
 
     <licenses>
