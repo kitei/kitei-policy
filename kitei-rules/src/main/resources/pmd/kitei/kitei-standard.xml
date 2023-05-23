@@ -20,7 +20,7 @@
 
     <description>Default ruleset. Derived from ecotramp, 2022-05-25</description>
 
-    <!-- PMD 6.35.0 - 6/22/2021 -->
+    <!-- PMD 6.55.0 - 5/22/2023 -->
 
     <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_bestpractices.html -->
     <rule ref="category/java/bestpractices.xml">
@@ -366,7 +366,6 @@
         <exclude name="AvoidFieldNameMatchingTypeName"/>
         <exclude name="AvoidInstanceofChecksInCatchClause"/>
         <exclude name="AvoidLiteralsInIfCondition"/>
-        <exclude name="BeanMembersShouldSerialize"/>
         <exclude name="CloseResource"/>
         <exclude name="CompareObjectsWithEquals"/>
         <!-- deprecated in 6.27 -->
@@ -378,10 +377,13 @@
         <exclude name="InstantiationToGetClass"/>
         <exclude name="MissingSerialVersionUID"/>
         <exclude name="MoreThanOneLogger"/>
+        <!-- renamed in 6.52.0 -->
+        <exclude name="NonSerializableClass"/>
         <exclude name="NonStaticInitializer"/>
         <exclude name="NullAssignment" />
         <exclude name="ProperLogger"/>
-        <exclude name="ReturnEmptyArrayRatherThanNull"/>
+        <!-- added in 6.37.0 -->
+        <exclude name="ReturnEmptyCollectionRatherThanNull"/>
         <exclude name="StringBufferInstantiationWithChar"/>
         <exclude name="UseCorrectExceptionLogging"/>
         <!-- https://github.com/pmd/pmd/issues/3173 -->
@@ -437,7 +439,7 @@
         </properties>
     </rule>
 
-    <rule ref="category/java/errorprone.xml/ReturnEmptyArrayRatherThanNull">
+    <rule ref="category/java/errorprone.xml/ReturnEmptyCollectionRatherThanNull">
         <priority>5</priority>
     </rule>
 
