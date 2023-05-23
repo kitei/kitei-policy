@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.basepom</groupId>
         <artifactId>basepom-oss</artifactId>
-        <version>45</version>
+        <version>53</version>
         <relativePath />
     </parent>
 
@@ -45,8 +45,6 @@
 
         <!-- do not fail on javadoc errors -->
         <basepom.check.fail-javadoc>false</basepom.check.fail-javadoc>
-
-        <basepom.release.profiles>basepom.oss-release,kitei-release</basepom.release.profiles>
     </properties>
 
     <build>
@@ -118,18 +116,4 @@
             </plugin>
         </plugins>
     </reporting>
-
-    <profiles>
-        <profile>
-            <id>kitei-release</id>
-            <properties>
-                <!-- unit and integration tests were run in the preparation step
-                     of the release, can be skipped here -->
-                <basepom.test.skip>true</basepom.test.skip>
-                <basepom.it.skip>true</basepom.it.skip>
-                <basepom.check.skip-all>true</basepom.check.skip-all>
-                <basepom.check.skip-javadoc>false</basepom.check.skip-javadoc>
-            </properties>
-        </profile>
-    </profiles>
 </project>
