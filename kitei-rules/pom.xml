@@ -16,45 +16,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.basepom</groupId>
-        <artifactId>basepom-oss</artifactId>
-        <version>53</version>
-        <relativePath />
+        <groupId>org.kitei.internal</groupId>
+        <artifactId>kitei-build-root</artifactId>
+        <version>10-SNAPSHOT</version>
+        <relativePath>../kitei-build-root</relativePath>
     </parent>
 
-    <groupId>org.kitei.internal</groupId>
+    <groupId>org.kitei</groupId>
     <artifactId>kitei-rules</artifactId>
-    <version>10-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>kitei-rules</name>
-    <description>
-        Ruleset and configuration for the various checker tools used by the Kitei build.
-    </description>
-
-    <inceptionYear>2013</inceptionYear>
-
-    <scm>
-        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
-        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
-        <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <licenses>
-        <license>
-            <name>Apache License 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>hgschmie</id>
-            <name>Henning Schmiedehausen</name>
-            <timezone>-8</timezone>
-        </developer>
-    </developers>
-
+    <name>kitei :: rules</name>
+    <description>Kitei rules for external projects</description>
 </project>

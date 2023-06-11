@@ -17,55 +17,26 @@
 
     <parent>
         <groupId>org.kitei.internal</groupId>
-        <artifactId>kitei-root</artifactId>
+        <artifactId>kitei-build-root</artifactId>
         <version>10-SNAPSHOT</version>
-        <relativePath>./kitei-root</relativePath>
+        <relativePath>./kitei-build-root</relativePath>
     </parent>
 
-    <groupId>org.kitei.internal</groupId>
-    <artifactId>kitei-policy</artifactId>
-    <version>10-SNAPSHOT</version>
+    <artifactId>kitei-build-policy</artifactId>
     <packaging>pom</packaging>
 
-    <name>kitei-policy</name>
-    <description>
-        Kitei policy related artifacts.
-    </description>
-    <url>https://github.com/kitei/kitei-policy/</url>
+    <name>kitei :: internal :: build-policy</name>
+    <description>Kitei policy related artifacts</description>
 
-    <inceptionYear>2013</inceptionYear>
-
-    <scm>
-        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
-        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
-        <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <licenses>
-        <license>
-            <name>Apache License 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>hgschmie</id>
-            <name>Henning Schmiedehausen</name>
-            <timezone>-8</timezone>
-        </developer>
-    </developers>
+    <properties>
+        <basepom.deploy.skip>true</basepom.deploy.skip>
+        <basepom.install.skip>true</basepom.install.skip>
+        <basepom.release.tag-name-format>kitei-policy-@{project.version}</basepom.release.tag-name-format>
+    </properties>
 
     <modules>
+        <module>kitei-build-root</module>
         <module>kitei-rules</module>
         <module>kitei-root</module>
     </modules>
-
-    <properties>
-        <basepom.check.skip-all>true</basepom.check.skip-all>
-        <basepom.check.skip-license>false</basepom.check.skip-license>
-        <basepom.release.tag-name-format>kitei-policy-@{project.version}</basepom.release.tag-name-format>
-    </properties>
 </project>

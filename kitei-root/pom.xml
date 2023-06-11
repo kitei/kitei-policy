@@ -16,16 +16,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.basepom</groupId>
-        <artifactId>basepom-oss</artifactId>
-        <version>53</version>
-        <relativePath />
+        <groupId>org.kitei.internal</groupId>
+        <artifactId>kitei-build-root</artifactId>
+        <version>10-SNAPSHOT</version>
+        <relativePath>../kitei-build-root</relativePath>
     </parent>
 
-    <groupId>org.kitei.internal</groupId>
+    <groupId>org.kitei</groupId>
     <artifactId>kitei-root</artifactId>
-    <version>10-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <name>kitei :: root</name>
+    <description>Kitei root for external projects</description>
 
     <properties>
         <project.build.targetJdk>17</project.build.targetJdk>
@@ -56,7 +58,7 @@
                     <artifactId>maven-pmd-plugin</artifactId>
                     <dependencies>
                         <dependency>
-                            <groupId>org.kitei.internal</groupId>
+                            <groupId>org.kitei</groupId>
                             <artifactId>kitei-rules</artifactId>
                             <version>${dep.kitei-rules.version}</version>
                         </dependency>
@@ -73,7 +75,7 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <dependencies>
                         <dependency>
-                            <groupId>org.kitei.internal</groupId>
+                            <groupId>org.kitei</groupId>
                             <artifactId>kitei-rules</artifactId>
                             <version>${dep.kitei-rules.version}</version>
                         </dependency>
@@ -88,7 +90,7 @@
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <dependencies>
                         <dependency>
-                            <groupId>org.kitei.internal</groupId>
+                            <groupId>org.kitei</groupId>
                             <artifactId>kitei-rules</artifactId>
                             <version>${dep.kitei-rules.version}</version>
                         </dependency>
