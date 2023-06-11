@@ -289,8 +289,8 @@ This code style contains NO javadoc formatting rules.
             <property name="braceAdjustment" value="0"/>
             <!-- *** MODIFIED *** Use four spaces *** -->
             <property name="caseIndent" value="4"/>
-            <property name="throwsIndent" value="8"/>
-            <property name="lineWrappingIndentation" value="8"/>
+            <property name="throwsIndent" value="4"/>
+            <property name="lineWrappingIndentation" value="4"/>
             <property name="arrayInitIndent" value="4"/>
         </module>
         <module name="AbbreviationAsWordInName">
