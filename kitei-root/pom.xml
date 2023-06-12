@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.kitei.internal</groupId>
         <artifactId>kitei-build-root</artifactId>
-        <version>11</version>
+        <version>12-SNAPSHOT</version>
         <relativePath>../kitei-build-root</relativePath>
     </parent>
 
@@ -33,7 +33,7 @@
         <project.build.targetJdk>17</project.build.targetJdk>
         <project.build.systemJdk>[17,)</project.build.systemJdk>
 
-        <dep.kitei-rules.version>11</dep.kitei-rules.version>
+        <dep.kitei-rules.version>12-SNAPSHOT</dep.kitei-rules.version>
 
         <!-- multi-module projects should deploy at the end -->
         <basepom.at-end.deploy>true</basepom.at-end.deploy>
