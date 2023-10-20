@@ -12,27 +12,29 @@
 
 SHELL = /bin/sh
 .SUFFIXES:
-.PHONY: help clean install deploy release
 
 MAVEN = ./mvnw
 
 export MAVEN_OPTS MAVEN_CONFIG
 
-default: help
+# must be the first target
+default:: help
 
-clean:
+Makefile:: ;
+
+clean::
 	${MAVEN} clean
 
-install:
+install::
 	${MAVEN} clean install
 
-deploy:
+deploy::
 	${MAVEN} clean deploy
 
-release:
+release::
 	${MAVEN} clean release:clean release:prepare release:perform
 
-help:
+help::
 	@echo " * clean        - clean local build tree"
 	@echo " * install      - installs build result in the local maven repository"
 	@echo " * deploy       - installs build result in the snapshot OSS repository"
