@@ -125,7 +125,139 @@
 
     <profiles>
         <profile>
-            <id>sonar</id>
+            <id>kitei.java21</id>
+            <activation>
+                <jdk>[21,)</jdk>
+            </activation>
+            <properties>
+                <!-- see https://github.com/mockito/mockito/issues/3037 -->
+                <basepom.it.arguments>-XX:+EnableDynamicAgentLoading</basepom.it.arguments>
+                <basepom.test.arguments>-XX:+EnableDynamicAgentLoading</basepom.test.arguments>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <!-- see https://inside.java/2023/07/29/quality-heads-up/ -->
+                                <proc>full</proc>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>kitei.jpms-main-auto-module</id>
+            <activation>
+                <property>
+                    <name>packaging</name>
+                    <value>jar</value>
+                </property>
+                <file>
+                    <missing>src/main/java/module-info.java</missing>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>jdbi.enforce-main-module-name</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireProperty>
+                                            <property>project.moduleName</property>
+                                            <message>This module must set a moduleName for the main artifact.</message>
+                                        </requireProperty>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>default-jar</id>
+                                <!-- add module name to main artifact -->
+                                <configuration>
+                                    <archive>
+                                        <manifestEntries combine.children="append">
+                                            <Automatic-Module-Name>${project.moduleName}</Automatic-Module-Name>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>kitei.jpms-test-auto-module</id>
+            <activation>
+                <property>
+                    <name>packaging</name>
+                    <value>jar</value>
+                </property>
+                <file>
+                    <missing>src/test/java/module-info.java</missing>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>jdbi.enforce-test-module-name</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireProperty>
+                                            <property>project.moduleName</property>
+                                            <message>This module must set a moduleName for the test artifact.</message>
+                                        </requireProperty>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>basepom.default</id>
+                                <!-- add module name with "test" appended to tests artifact -->
+                                <configuration>
+                                    <archive>
+                                        <manifestEntries combine.children="append">
+                                            <Automatic-Module-Name>${project.moduleName}.tests</Automatic-Module-Name>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>kitei.sonar</id>
             <properties>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
                 <sonar.java.checkstyle.reportPaths>target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
