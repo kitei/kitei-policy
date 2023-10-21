@@ -309,9 +309,12 @@ This code style contains NO javadoc formatting rules.
         <module name="CustomImportOrder">
             <property name="sortImportsInGroupAlphabetically" value="true"/>
             <property name="separateLineBetweenGroups" value="true"/>
-            <!-- *** MODIFIED *** - static, then local, then standard java, then everything else -->
-            <property name="customImportOrderRules" value="STATIC###SAME_PACKAGE(2)###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE"/>
+            <!-- *** MODIFIED *** - static, then local, then special, then standard java, then everything else -->
+            <property name="customImportOrderRules" value="STATIC###SAME_PACKAGE(2)###SPECIAL_IMPORTS###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE"/>
             <property name="tokens" value="IMPORT, STATIC_IMPORT, PACKAGE_DEF"/>
+            <property name="standardPackageRegExp" value="^(java|javax|jakarta)\."/>
+            <property name="specialImportsRegExp" value="${checkstyle.special-import-regexp}"
+                      default="^(dev\.ecotramp|org\.kitei|org\.basepom)\."/>
         </module>
         <module name="MethodParamPad">
             <property name="tokens"

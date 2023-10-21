@@ -62,6 +62,7 @@
         <exclude name="UnusedFormalParameter"/>
         <exclude name="UseVarargs"/>
         <exclude name="UseStandardCharsets"/>
+        <exclude name="UseTryWithResources"/>
         <exclude name="ForLoopVariableCount"/>
     </rule>
 
@@ -129,6 +130,10 @@
     </rule>
 
     <rule ref="category/java/bestpractices.xml/UseStandardCharsets">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/bestpractices.xml/UseTryWithResources">
         <priority>5</priority>
     </rule>
 
@@ -388,6 +393,8 @@
         <exclude name="UseCorrectExceptionLogging"/>
         <!-- https://github.com/pmd/pmd/issues/3173 -->
         <exclude name="UseProperClassLoader"/>
+
+        <exclude name="TestClassWithoutTestCases"/>
     </rule>
 
     <rule ref="category/java/errorprone.xml/AssignmentToNonFinalStatic">
@@ -399,14 +406,6 @@
     </rule>
 
     <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable">
-        <priority>5</priority>
-    </rule>
-
-    <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName">
-        <priority>5</priority>
-    </rule>
-
-    <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingTypeName">
         <priority>5</priority>
     </rule>
 
@@ -446,6 +445,11 @@
     <rule ref="category/java/errorprone.xml/StringBufferInstantiationWithChar">
         <priority>3</priority>
     </rule>
+
+    <rule ref="category/java/errorprone.xml/TestClassWithoutTestCases">
+        <priority>5</priority>
+    </rule>
+
 
     <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_multithreading.html -->
     <rule ref="category/java/multithreading.xml">
