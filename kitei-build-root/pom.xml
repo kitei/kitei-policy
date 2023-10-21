@@ -25,7 +25,7 @@
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-build-root</artifactId>
-    <version>14</version>
+    <version>15-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>kitei :: internal :: build-root</name>
