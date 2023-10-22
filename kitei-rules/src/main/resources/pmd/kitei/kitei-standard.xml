@@ -64,6 +64,7 @@
         <exclude name="UseStandardCharsets"/>
         <exclude name="UseTryWithResources"/>
         <exclude name="ForLoopVariableCount"/>
+        <exclude name="PreserveStackTrace"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml/AvoidReassigningParameters">
@@ -134,6 +135,10 @@
     </rule>
 
     <rule ref="category/java/bestpractices.xml/UseTryWithResources">
+        <priority>5</priority>
+    </rule>
+
+    <rule ref="category/java/bestpractices.xml/PreserveStackTrace">
         <priority>5</priority>
     </rule>
 
