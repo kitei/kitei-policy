@@ -18,11 +18,11 @@
 	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
 
-    <description>Default ruleset. Derived from ecotramp, 2022-05-25</description>
+    <description>Default ruleset</description>
 
-    <!-- PMD 6.55.0 - 5/22/2023 -->
+    <!-- PMD 7.5.0 - 9/11/2024 -->
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_bestpractices.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_bestpractices.html -->
     <rule ref="category/java/bestpractices.xml">
         <exclude name="AbstractClassWithoutAbstractMethod"/>
         <exclude name="AccessorClassGeneration"/>
@@ -44,17 +44,13 @@
         <exclude name="JUnitAssertionsShouldIncludeMessage" />
 
         <!-- this is a valid rule but it has too many bugs to be useful. See https://github.com/pmd/pmd/issues/2147 -->
-        <exclude name="JUnitTestsShouldIncludeAssert" />
+        <!-- comment because it is supposed to be fixed <exclude name="JUnitTestsShouldIncludeAssert" /> -->
 
         <!-- will complain about any field that is not an interface. -->
         <exclude name="LooseCoupling" />
 
         <exclude name="OneDeclarationPerLine" />
         <exclude name="LiteralsFirstInComparisons"/>
-        <!-- deprecated in 6.24 -->
-        <exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons"/>
-        <!-- deprecated in 6.24 -->
-        <exclude name="PositionLiteralsFirstInComparisons"/>
         <exclude name="ReplaceEnumerationWithIterator"/>
         <exclude name="ReplaceHashtableWithMap"/>
         <exclude name="ReplaceVectorWithList"/>
@@ -142,7 +138,7 @@
         <priority>5</priority>
     </rule>
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_codestyle.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_codestyle.html -->
     <rule ref="category/java/codestyle.xml">
         <exclude name="AbstractNaming"/>
         <exclude name="AtLeastOneConstructor"/>
@@ -183,12 +179,6 @@
         <exclude name="LinguisticNaming" />
         <exclude name="UseShortArrayInitializer" />
         <exclude name="UnnecessaryImport" />
-
-        <!-- deprecated, remove with 7.0.0 -->
-        <exclude name="VariableNamingConventions"/>
-        <exclude name="MIsLeadingVariableName"/>
-        <exclude name="SuspiciousConstantFieldName"/>
-        <exclude name="AvoidPrefixingMethodParameters"/>
     </rule>
 
     <rule ref="category/java/codestyle.xml/FieldNamingConventions">
@@ -270,7 +260,7 @@
         <priority>5</priority>
     </rule>
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_design.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_design.html -->
     <rule ref="category/java/design.xml">
         <exclude name="AvoidCatchingGenericException"/>
         <exclude name="AvoidDeeplyNestedIfStmts"/>
@@ -365,7 +355,9 @@
         <priority>5</priority>
     </rule>
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_errorprone.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_documentation.html -->
+
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_errorprone.html -->
     <rule ref="category/java/errorprone.xml">
         <exclude name="AssignmentInOperand"/>
         <exclude name="AssignmentToNonFinalStatic"/>
@@ -378,8 +370,6 @@
         <exclude name="AvoidLiteralsInIfCondition"/>
         <exclude name="CloseResource"/>
         <exclude name="CompareObjectsWithEquals"/>
-        <!-- deprecated in 6.27 -->
-        <exclude name="DataflowAnomalyAnalysis"/>
         <exclude name="DoNotCallGarbageCollectionExplicitly"/>
         <exclude name="DoNotHardCodeSDCard"/>
         <exclude name="DoNotThrowExceptionInFinally"/>
@@ -397,7 +387,7 @@
         <exclude name="StringBufferInstantiationWithChar"/>
         <exclude name="UseCorrectExceptionLogging"/>
         <!-- https://github.com/pmd/pmd/issues/3173 -->
-        <exclude name="UseProperClassLoader"/>
+        <!-- supposed to be fixed in 7.0.0 - <exclude name="UseProperClassLoader"/> -->
 
         <exclude name="TestClassWithoutTestCases"/>
     </rule>
@@ -456,9 +446,10 @@
     </rule>
 
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_multithreading.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_multithreading.html -->
     <rule ref="category/java/multithreading.xml">
         <exclude name="AvoidSynchronizedAtMethodLevel"/>
+        <exclude name="AvoidSynchronizedStatement" />
         <exclude name="AvoidUsingVolatile"/>
         <exclude name="DoubleCheckedLocking"/>
         <exclude name="UseConcurrentHashMap"/>
@@ -466,15 +457,17 @@
         <exclude name="DoNotUseThreads" />
     </rule>
 
+    <rule ref="category/java/multithreading.xml/AvoidSynchronizedStatement">
+        <priority>5</priority>
+    </rule>
+
     <rule ref="category/java/multithreading.xml/DontCallThreadRun">
         <priority>3</priority>
     </rule>
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_java_performance.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_performance.html -->
     <rule ref="category/java/performance.xml">
         <exclude name="AvoidInstantiatingObjectsInLoops" />
-        <!-- deprecated in 6.31 -->
-        <exclude name="AvoidUsingShortType"/>
 
         <!-- all methods return this. Useless and actually wrong. -->
         <exclude name="ConsecutiveAppendsShouldReuse" />
@@ -485,8 +478,6 @@
         <exclude name="InsufficientStringBufferDeclaration" />
 
         <exclude name="RedundantFieldInitializer" />
-        <!-- deprecated in 6.31 -->
-        <exclude name="SimplifyStartsWith"/>
         <exclude name="TooFewBranchesForASwitchStatement"/>
         <exclude name="UseArrayListInsteadOfVector"/>
         <exclude name="UseStringBufferForStringAppends"/>
@@ -500,7 +491,9 @@
         <priority>5</priority>
     </rule>
 
-    <!-- https://pmd.github.io/pmd-6.35.0/pmd_rules_pom_errorprone.html -->
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_security.html -->
+
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_pom_errorprone.html -->
 
     <rule ref="category/pom/errorprone.xml">
     </rule>
