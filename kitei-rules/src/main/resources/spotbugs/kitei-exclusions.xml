@@ -13,9 +13,9 @@
 ~   limitations under the License.
 -->
 
-<FindBugsFilter xmlns="https://github.com/spotbugs/filter/3.0.0"
+<FindBugsFilter xmlns="https://github.com/spotbugs/filter/4.8.4"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+                xsi:schemaLocation="https://github.com/spotbugs/filter/4.8.4 https://raw.githubusercontent.com/spotbugs/spotbugs/4.8.4/spotbugs/etc/findbugsfilter.xsd">
     <!-- spotbugs 4.3.0 made this very aggressive and less useful -->
     <Match>
         <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
@@ -44,5 +44,9 @@
     <!-- adding a rule in 2023 to deal with a problem in Java 6 that does no longer apply to modern java ... -->
     <Match>
         <Bug pattern="CT_CONSTRUCTOR_THROW" />
+    </Match>
+    <!-- too many false positives -->
+    <Match>
+        <Bug pattern="SING_SINGLETON_HAS_NONPRIVATE_CONSTRUCTOR" />
     </Match>
 </FindBugsFilter>
