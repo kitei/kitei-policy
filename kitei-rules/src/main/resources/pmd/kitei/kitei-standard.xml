@@ -140,15 +140,12 @@
 
     <!-- https://docs.pmd-code.org/latest/pmd_rules_java_codestyle.html -->
     <rule ref="category/java/codestyle.xml">
-        <exclude name="AbstractNaming"/>
         <exclude name="AtLeastOneConstructor"/>
-        <exclude name="AvoidFinalLocalVariable"/>
         <exclude name="CallSuperInConstructor"/>
         <exclude name="ClassNamingConventions"/>
         <exclude name="CommentDefaultAccessModifier"/>
         <exclude name="ConfusingTernary"/>
         <exclude name="ControlStatementBraces"/>
-        <exclude name="DefaultPackage"/>
         <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
         <exclude name="FieldDeclarationsShouldBeAtStartOfClass"/>
         <exclude name="ForLoopShouldBeWhileLoop"/>
