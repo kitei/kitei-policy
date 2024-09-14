@@ -32,8 +32,8 @@
     -->
 
     <properties>
-        <project.build.targetJdk>17</project.build.targetJdk>
-        <project.build.systemJdk>[17,)</project.build.systemJdk>
+        <project.build.targetJdk>21</project.build.targetJdk>
+        <project.build.systemJdk>[21,)</project.build.systemJdk>
 
         <dep.kitei-rules.version>18-SNAPSHOT</dep.kitei-rules.version>
 
