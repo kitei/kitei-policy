@@ -15,9 +15,8 @@ SHELL = /bin/sh
 
 MAVEN = ./mvnw
 
-export MAVEN_OPTS MAVEN_CONFIG
+export MAVEN_OPTS MAVEN_ARGS
 
-# must be the first target
 default:: help
 
 Makefile:: ;

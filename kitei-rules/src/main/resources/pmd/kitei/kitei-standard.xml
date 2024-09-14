@@ -14,33 +14,32 @@
 -->
 
 <ruleset name="kitei-standard"
-	     xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
-
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <description>Default ruleset</description>
 
     <!-- PMD 7.5.0 - 9/11/2024 -->
 
     <!-- https://docs.pmd-code.org/latest/pmd_rules_java_bestpractices.html -->
     <rule ref="category/java/bestpractices.xml">
-        <exclude name="AbstractClassWithoutAbstractMethod"/>
-        <exclude name="AccessorClassGeneration"/>
-        <exclude name="AccessorMethodGeneration"/>
-        <exclude name="AvoidPrintStackTrace"/>
-        <exclude name="AvoidReassigningParameters"/>
-        <exclude name="AvoidReassigningLoopVariables"/>
+        <exclude name="AbstractClassWithoutAbstractMethod" />
+        <exclude name="AccessorClassGeneration" />
+        <exclude name="AccessorMethodGeneration" />
+        <exclude name="AvoidPrintStackTrace" />
+        <exclude name="AvoidReassigningParameters" />
+        <exclude name="AvoidReassigningLoopVariables" />
 
         <!-- will flag any class member that is a string buffer. Useless. -->
-        <exclude name="AvoidStringBufferField"/>
+        <exclude name="AvoidStringBufferField" />
 
-        <exclude name="AvoidUsingHardCodedIP"/>
-        <exclude name="DefaultLabelNotLastInSwitchStmt"/>
-        <exclude name="GuardLogStatement"/>
+        <exclude name="AvoidUsingHardCodedIP" />
+        <exclude name="DefaultLabelNotLastInSwitchStmt" />
+        <exclude name="GuardLogStatement" />
         <!-- This is a reasonable rule but JDK8 Predicate#test triggers it unfortunately -->
         <exclude name="JUnit4TestShouldUseTestAnnotation" />
         <exclude name="JUnitTestContainsTooManyAsserts" />
-        <exclude name="JUnitUseExpected"/>
+        <exclude name="JUnitUseExpected" />
         <exclude name="JUnitAssertionsShouldIncludeMessage" />
 
         <!-- this is a valid rule but it has too many bugs to be useful. See https://github.com/pmd/pmd/issues/2147 -->
@@ -50,17 +49,17 @@
         <exclude name="LooseCoupling" />
 
         <exclude name="OneDeclarationPerLine" />
-        <exclude name="LiteralsFirstInComparisons"/>
-        <exclude name="ReplaceEnumerationWithIterator"/>
-        <exclude name="ReplaceHashtableWithMap"/>
-        <exclude name="ReplaceVectorWithList"/>
-        <exclude name="SystemPrintln"/>
-        <exclude name="UnusedFormalParameter"/>
-        <exclude name="UseVarargs"/>
-        <exclude name="UseStandardCharsets"/>
-        <exclude name="UseTryWithResources"/>
-        <exclude name="ForLoopVariableCount"/>
-        <exclude name="PreserveStackTrace"/>
+        <exclude name="LiteralsFirstInComparisons" />
+        <exclude name="ReplaceEnumerationWithIterator" />
+        <exclude name="ReplaceHashtableWithMap" />
+        <exclude name="ReplaceVectorWithList" />
+        <exclude name="SystemPrintln" />
+        <exclude name="UnusedFormalParameter" />
+        <exclude name="UseVarargs" />
+        <exclude name="UseStandardCharsets" />
+        <exclude name="UseTryWithResources" />
+        <exclude name="ForLoopVariableCount" />
+        <exclude name="PreserveStackTrace" />
     </rule>
 
     <rule ref="category/java/bestpractices.xml/AvoidReassigningParameters">
@@ -140,39 +139,40 @@
 
     <!-- https://docs.pmd-code.org/latest/pmd_rules_java_codestyle.html -->
     <rule ref="category/java/codestyle.xml">
-        <exclude name="AtLeastOneConstructor"/>
-        <exclude name="CallSuperInConstructor"/>
-        <exclude name="ClassNamingConventions"/>
-        <exclude name="CommentDefaultAccessModifier"/>
-        <exclude name="ConfusingTernary"/>
-        <exclude name="ControlStatementBraces"/>
-        <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
-        <exclude name="FieldDeclarationsShouldBeAtStartOfClass"/>
-        <exclude name="ForLoopShouldBeWhileLoop"/>
-        <exclude name="GenericsNaming"/>
-        <exclude name="LocalVariableCouldBeFinal"/>
-        <exclude name="LongVariable"/>
-        <exclude name="MethodArgumentCouldBeFinal"/>
-        <exclude name="MethodNamingConventions"/>
-        <exclude name="OnlyOneReturn"/>
-        <exclude name="PrematureDeclaration"/>
-        <exclude name="ShortClassName"/>
-        <exclude name="ShortMethodName"/>
-        <exclude name="ShortVariable"/>
-        <exclude name="TooManyStaticImports"/>
+        <exclude name="AtLeastOneConstructor" />
+        <exclude name="CallSuperInConstructor" />
+        <exclude name="ClassNamingConventions" />
+        <exclude name="CommentDefaultAccessModifier" />
+        <exclude name="ConfusingTernary" />
+        <exclude name="ControlStatementBraces" />
+        <exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
+        <exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
+        <exclude name="ForLoopShouldBeWhileLoop" />
+        <exclude name="GenericsNaming" />
+        <exclude name="LocalVariableCouldBeFinal" />
+        <exclude name="LongVariable" />
+        <exclude name="MethodArgumentCouldBeFinal" />
+        <exclude name="MethodNamingConventions" />
+        <exclude name="OnlyOneReturn" />
+        <exclude name="PrematureDeclaration" />
+        <exclude name="ShortClassName" />
+        <exclude name="ShortMethodName" />
+        <exclude name="ShortVariable" />
+        <exclude name="TooManyStaticImports" />
         <exclude name="UnnecessaryConstructor" />
         <exclude name="UnnecessaryLocalBeforeReturn" />
         <exclude name="UnnecessaryModifier" />
-        <exclude name="UselessParentheses"/>
-        <exclude name="BooleanGetMethodName"/>
-        <exclude name="ExtendsObject"/>
-        <exclude name="UseUnderscoresInNumericLiterals"/>
+        <exclude name="UselessParentheses" />
+        <exclude name="UseExplicitTypes" />
+        <exclude name="BooleanGetMethodName" />
+        <exclude name="ExtendsObject" />
+        <exclude name="UseUnderscoresInNumericLiterals" />
         <exclude name="UnnecessaryAnnotationValueElement" />
-        <exclude name="UnnecessaryFullyQualifiedName"/>
+        <exclude name="UnnecessaryFullyQualifiedName" />
 
-        <exclude name="FieldNamingConventions"/>
-        <exclude name="FormalParameterNamingConventions"/>
-        <exclude name="LocalVariableNamingConventions"/>
+        <exclude name="FieldNamingConventions" />
+        <exclude name="FormalParameterNamingConventions" />
+        <exclude name="LocalVariableNamingConventions" />
         <exclude name="LinguisticNaming" />
         <exclude name="UseShortArrayInitializer" />
         <exclude name="UnnecessaryImport" />
@@ -203,7 +203,7 @@
 
     <rule ref="category/java/codestyle.xml/ControlStatementBraces">
         <properties>
-            <property name="allowEmptyLoop" value="true"/>
+            <property name="allowEmptyLoop" value="true" />
         </properties>
     </rule>
 
@@ -229,7 +229,7 @@
 
     <rule ref="category/java/codestyle.xml/TooManyStaticImports">
         <properties>
-            <property name="maximumStaticImports" value="20"/>
+            <property name="maximumStaticImports" value="20" />
         </properties>
     </rule>
 
@@ -259,33 +259,33 @@
 
     <!-- https://docs.pmd-code.org/latest/pmd_rules_java_design.html -->
     <rule ref="category/java/design.xml">
-        <exclude name="AvoidCatchingGenericException"/>
-        <exclude name="AvoidDeeplyNestedIfStmts"/>
-        <exclude name="AvoidThrowingNullPointerException"/>
-        <exclude name="CollapsibleIfStatements"/>
-        <exclude name="CouplingBetweenObjects"/>
-        <exclude name="DataClass"/>
-        <exclude name="ExcessiveImports"/>
-        <exclude name="ExcessiveParameterList"/>
-        <exclude name="ExcessivePublicCount"/>
-        <exclude name="GodClass"/>
-        <exclude name="ImmutableField"/>
-        <exclude name="LawOfDemeter"/>
-        <exclude name="LogicInversion"/>
-        <exclude name="LoosePackageCoupling"/>
-        <exclude name="NPathComplexity"/>
-        <exclude name="NcssCount"/>
-        <exclude name="SignatureDeclareThrowsException"/>
-        <exclude name="SimplifyBooleanExpressions"/>
-        <exclude name="SimplifyBooleanReturns"/>
-        <exclude name="SingularField"/>
-        <exclude name="SwitchDensity"/>
-        <exclude name="TooManyFields"/>
-        <exclude name="TooManyMethods"/>
-        <exclude name="UseObjectForClearerAPI"/>
-        <exclude name="UseUtilityClass"/>
-        <exclude name="AvoidUncheckedExceptionsInSignatures"/>
-        <exclude name="CognitiveComplexity"/>
+        <exclude name="AvoidCatchingGenericException" />
+        <exclude name="AvoidDeeplyNestedIfStmts" />
+        <exclude name="AvoidThrowingNullPointerException" />
+        <exclude name="CollapsibleIfStatements" />
+        <exclude name="CouplingBetweenObjects" />
+        <exclude name="DataClass" />
+        <exclude name="ExcessiveImports" />
+        <exclude name="ExcessiveParameterList" />
+        <exclude name="ExcessivePublicCount" />
+        <exclude name="GodClass" />
+        <exclude name="ImmutableField" />
+        <exclude name="LawOfDemeter" />
+        <exclude name="LogicInversion" />
+        <exclude name="LoosePackageCoupling" />
+        <exclude name="NPathComplexity" />
+        <exclude name="NcssCount" />
+        <exclude name="SignatureDeclareThrowsException" />
+        <exclude name="SimplifyBooleanExpressions" />
+        <exclude name="SimplifyBooleanReturns" />
+        <exclude name="SingularField" />
+        <exclude name="SwitchDensity" />
+        <exclude name="TooManyFields" />
+        <exclude name="TooManyMethods" />
+        <exclude name="UseObjectForClearerAPI" />
+        <exclude name="UseUtilityClass" />
+        <exclude name="AvoidUncheckedExceptionsInSignatures" />
+        <exclude name="CognitiveComplexity" />
     </rule>
 
     <rule ref="category/java/design.xml/CollapsibleIfStatements">
@@ -356,37 +356,37 @@
 
     <!-- https://docs.pmd-code.org/latest/pmd_rules_java_errorprone.html -->
     <rule ref="category/java/errorprone.xml">
-        <exclude name="AssignmentInOperand"/>
-        <exclude name="AssignmentToNonFinalStatic"/>
-        <exclude name="AvoidAccessibilityAlteration"/>
-        <exclude name="AvoidCatchingThrowable"/>
-        <exclude name="AvoidDuplicateLiterals"/>
-        <exclude name="AvoidFieldNameMatchingMethodName"/>
-        <exclude name="AvoidFieldNameMatchingTypeName"/>
-        <exclude name="AvoidInstanceofChecksInCatchClause"/>
-        <exclude name="AvoidLiteralsInIfCondition"/>
-        <exclude name="CloseResource"/>
-        <exclude name="CompareObjectsWithEquals"/>
-        <exclude name="DoNotCallGarbageCollectionExplicitly"/>
-        <exclude name="DoNotHardCodeSDCard"/>
-        <exclude name="DoNotThrowExceptionInFinally"/>
-        <exclude name="DontImportSun"/>
-        <exclude name="InstantiationToGetClass"/>
-        <exclude name="MissingSerialVersionUID"/>
-        <exclude name="MoreThanOneLogger"/>
+        <exclude name="AssignmentInOperand" />
+        <exclude name="AssignmentToNonFinalStatic" />
+        <exclude name="AvoidAccessibilityAlteration" />
+        <exclude name="AvoidCatchingThrowable" />
+        <exclude name="AvoidDuplicateLiterals" />
+        <exclude name="AvoidFieldNameMatchingMethodName" />
+        <exclude name="AvoidFieldNameMatchingTypeName" />
+        <exclude name="AvoidInstanceofChecksInCatchClause" />
+        <exclude name="AvoidLiteralsInIfCondition" />
+        <exclude name="CloseResource" />
+        <exclude name="CompareObjectsWithEquals" />
+        <exclude name="DoNotCallGarbageCollectionExplicitly" />
+        <exclude name="DoNotHardCodeSDCard" />
+        <exclude name="DoNotThrowExceptionInFinally" />
+        <exclude name="DontImportSun" />
+        <exclude name="InstantiationToGetClass" />
+        <exclude name="MissingSerialVersionUID" />
+        <exclude name="MoreThanOneLogger" />
         <!-- renamed in 6.52.0 -->
-        <exclude name="NonSerializableClass"/>
-        <exclude name="NonStaticInitializer"/>
+        <exclude name="NonSerializableClass" />
+        <exclude name="NonStaticInitializer" />
         <exclude name="NullAssignment" />
-        <exclude name="ProperLogger"/>
+        <exclude name="ProperLogger" />
         <!-- added in 6.37.0 -->
-        <exclude name="ReturnEmptyCollectionRatherThanNull"/>
-        <exclude name="StringBufferInstantiationWithChar"/>
-        <exclude name="UseCorrectExceptionLogging"/>
+        <exclude name="ReturnEmptyCollectionRatherThanNull" />
+        <exclude name="StringBufferInstantiationWithChar" />
+        <exclude name="UseCorrectExceptionLogging" />
         <!-- https://github.com/pmd/pmd/issues/3173 -->
         <!-- supposed to be fixed in 7.0.0 - <exclude name="UseProperClassLoader"/> -->
 
-        <exclude name="TestClassWithoutTestCases"/>
+        <exclude name="TestClassWithoutTestCases" />
     </rule>
 
     <rule ref="category/java/errorprone.xml/AssignmentToNonFinalStatic">
@@ -442,15 +442,14 @@
         <priority>5</priority>
     </rule>
 
-
     <!-- https://docs.pmd-code.org/latest/pmd_rules_java_multithreading.html -->
     <rule ref="category/java/multithreading.xml">
-        <exclude name="AvoidSynchronizedAtMethodLevel"/>
+        <exclude name="AvoidSynchronizedAtMethodLevel" />
         <exclude name="AvoidSynchronizedStatement" />
-        <exclude name="AvoidUsingVolatile"/>
-        <exclude name="DoubleCheckedLocking"/>
-        <exclude name="UseConcurrentHashMap"/>
-        <exclude name="DontCallThreadRun"/>
+        <exclude name="AvoidUsingVolatile" />
+        <exclude name="DoubleCheckedLocking" />
+        <exclude name="UseConcurrentHashMap" />
+        <exclude name="DontCallThreadRun" />
         <exclude name="DoNotUseThreads" />
     </rule>
 
@@ -475,9 +474,9 @@
         <exclude name="InsufficientStringBufferDeclaration" />
 
         <exclude name="RedundantFieldInitializer" />
-        <exclude name="TooFewBranchesForASwitchStatement"/>
-        <exclude name="UseArrayListInsteadOfVector"/>
-        <exclude name="UseStringBufferForStringAppends"/>
+        <exclude name="TooFewBranchesForASwitchStatement" />
+        <exclude name="UseArrayListInsteadOfVector" />
+        <exclude name="UseStringBufferForStringAppends" />
     </rule>
 
     <rule ref="category/java/performance.xml/AvoidInstantiatingObjectsInLoops">

@@ -13,10 +13,10 @@
 ~   limitations under the License.
 -->
 <ruleset name="kitei"
-	 xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.net/ruleset_2_0_0.xsd">
 
-  <description>Kitei source code PMD rules. This is the ruleset that should be applied to all Kitei code.</description>
-  <rule ref="pmd/kitei/kitei-standard.xml"/>
+    <description>Kitei source code PMD rules. This is the ruleset that should be applied to all Kitei code.</description>
+    <rule ref="pmd/kitei/kitei-standard.xml" />
 </ruleset>
