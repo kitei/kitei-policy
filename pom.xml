@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.kitei.internal</groupId>
         <artifactId>kitei-build-root</artifactId>
-        <version>17-SNAPSHOT</version>
+        <version>17</version>
         <relativePath>./kitei-build-root</relativePath>
     </parent>
 
@@ -48,7 +48,7 @@
         <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
         <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
         <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
+        <tag>kitei-policy-17</tag>
     </scm>
 
     <developers>
