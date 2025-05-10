@@ -28,6 +28,12 @@
     <version>18-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <!-- remove after basepom 64 -->
+        <basepom.central-publishing.skip>${basepom.deploy.skip}</basepom.central-publishing.skip>
+        <basepom.release.profiles>basepom.central-release</basepom.release.profiles>
+    </properties>
+
     <name>kitei :: internal :: build-root</name>
     <!--
         <description>Kitei build root</description>
