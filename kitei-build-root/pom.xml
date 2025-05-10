@@ -25,7 +25,7 @@
 
     <groupId>org.kitei.internal</groupId>
     <artifactId>kitei-build-root</artifactId>
-    <version>18</version>
+    <version>19-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -55,7 +55,7 @@
     <scm>
         <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
         <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
-        <tag>kitei-policy-18</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/kitei/kitei-policy/</url>
     </scm>
 
