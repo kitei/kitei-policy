@@ -26,38 +26,13 @@
     <packaging>pom</packaging>
 
     <name>kitei :: internal :: build-policy</name>
-    <description>Kitei policy related artifacts</description>
-    <url>https://github.com/kitei/kitei-policy/</url>
-    <inceptionYear>2013</inceptionYear>
+    <description>Kitei project - policy and build related artifacts</description>
 
     <properties>
         <basepom.deploy.skip>true</basepom.deploy.skip>
         <basepom.install.skip>true</basepom.install.skip>
         <basepom.release.tag-name-format>kitei-policy-@{project.version}</basepom.release.tag-name-format>
     </properties>
-
-    <licenses>
-        <license>
-            <name>Apache License 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <scm>
-        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
-        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
-        <url>https://github.com/kitei/kitei-policy/</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <developers>
-        <developer>
-            <id>hgschmie</id>
-            <name>Henning Schmiedehausen</name>
-            <timezone>-8</timezone>
-        </developer>
-    </developers>
 
     <modules>
         <module>kitei-build-root</module>

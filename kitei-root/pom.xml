@@ -27,9 +27,7 @@
     <packaging>pom</packaging>
 
     <name>kitei :: root</name>
-    <!--
-        <description>Kitei root for external projects</description>
-    -->
+    <description>Kitei project - root for external projects</description>
 
     <properties>
         <project.build.targetJdk>21</project.build.targetJdk>

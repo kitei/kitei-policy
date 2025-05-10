@@ -30,12 +30,35 @@
 
     <properties>
         <!-- remove after basepom 64 -->
-        <basepom.central-publishing.skip>${basepom.deploy.skip}</basepom.central-publishing.skip>
         <basepom.release.profiles>basepom.central-release</basepom.release.profiles>
     </properties>
 
+    <url>https://github.com/kitei</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>kitei</id>
+            <name>The Kitei group</name>
+            <url>https://github.com/kitei</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/kitei/kitei-policy.git</connection>
+        <developerConnection>scm:git:git@github.com:kitei/kitei-policy.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/kitei/kitei-policy/</url>
+    </scm>
+
     <name>kitei :: internal :: build-root</name>
-    <!--
-        <description>Kitei build root</description>
-    -->
+    <description>Kitei project - build root</description>
 </project>
